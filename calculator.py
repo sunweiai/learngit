@@ -2,20 +2,96 @@
 
 from Tkinter import *
 
-root = Tk()
+def btnClick(numbers):
+    global operator
+    operator = operator + str(numbers)
+    text_Input.set(operator)
 
-def evaluate(event):
-    data = nameinpt.get()
-    ans.configure(text="Answer:"+str(eval(data)))
+def btnClearDisplay():
+    global operator
+    operator=""
+    text_Input.set("")
 
-title = Label(text="请输入你的表达式:")
-title.pack()
+def btnEqualsInput():
+    global operator
+    sumup=str(eval(operator))
+    text_Input.set(sumup)
+    operator=""
 
-nameinpt = Entry(root)
-nameinpt.bind("<Return>",evaluate)
-nameinpt.pack()
+cal = Tk()
+cal.title("Calculator")
+operator = ""
+text_Input = StringVar()
 
-ans = Label(root)
-ans.pack()
+#设置主窗口大小
+#cal.minsize(300,300)
 
-root.mainloop()
+txtDisplay = Entry(cal,font=('arial',20,'bold'),textvariable=text_Input,bd=30,
+                   insertwidth=4,bg="powder blue",justify='right')
+txtDisplay.grid(columnspan=4)
+
+btn7 = Button(cal,padx=16,pady=16,bd=8,fg ="black",font =('arial',20,'bold'),
+              text="7",bg="powder blue",command=lambda:btnClick(7))
+btn7.grid(row = 1,column = 0)
+
+btn8 = Button(cal,padx = 16,pady = 16,bd = 8,fg = "black",font = ('arial',20,'bold'),
+              text = "8",bg = "powder blue",command=lambda:btnClick(8))
+btn8.grid(row = 1,column = 1)
+
+btn9 = Button(cal,padx = 16,pady = 16,bd = 8,fg = "black",font = ('arial',20,'bold'),
+              text = "9",bg = "powder blue",command=lambda:btnClick(9))
+btn9.grid(row = 1,column = 2)
+
+Addition = Button(cal,padx = 16,pady = 16,bd = 8,fg = "black",font = ('arial',20,'bold'),
+              text = "+",bg = "powder blue",command = lambda:btnClick("+"))
+Addition.grid(row = 1,column = 3)
+#================================================================================
+btn4 = Button(cal,padx = 16,pady = 16,bd = 8,fg = "black",font = ('arial',20,'bold'),
+              text = "4",bg = "powder blue",command=lambda:btnClick(4))
+btn4.grid(row = 2,column = 0)
+
+btn5 = Button(cal,padx = 16,pady = 16,bd = 8,fg = "black",font = ('arial',20,'bold'),
+              text = "5",bg = "powder blue",command=lambda:btnClick(5))
+btn5.grid(row = 2,column = 1)
+
+btn6 = Button(cal,padx = 16,pady = 16,bd = 8,fg = "black",font = ('arial',20,'bold'),
+              text = "6",bg = "powder blue",command=lambda:btnClick(6))
+btn6.grid(row = 2,column = 2)
+
+Subtraction = Button(cal,padx = 16,pady = 16,bd = 8,fg = "black",font = ('arial',20,'bold'),
+              text = "-",bg = "powder blue",command = lambda:btnClick("-"))
+Subtraction.grid(row = 2,column = 3)
+#================================================================================
+btn1 = Button(cal,padx = 16,pady = 16,bd = 8,fg = "black",font = ('arial',20,'bold'),
+              text = "1",bg = "powder blue",command=lambda:btnClick(1))
+btn1.grid(row = 3,column = 0)
+
+btn2 = Button(cal,padx = 16,pady = 16,bd = 8,fg = "black",font = ('arial',20,'bold'),
+              text = "2",bg = "powder blue",command=lambda:btnClick(2))
+btn2.grid(row = 3,column = 1)
+
+btn3 = Button(cal,padx = 16,pady = 16,bd = 8,fg = "black",font = ('arial',20,'bold'),
+              text = "3",bg = "powder blue",command=lambda:btnClick(3))
+btn3.grid(row = 3,column = 2)
+
+Multiply = Button(cal,padx = 16,pady = 16,bd = 8,fg = "black",font = ('arial',20,'bold'),
+              text = "*",bg = "powder blue",command = lambda:btnClick("*"))
+Multiply.grid(row = 3,column = 3)
+#================================================================================
+btn0 = Button(cal,padx = 16,pady = 16,bd = 8,fg = "black",font = ('arial',20,'bold'),
+              text = "0",bg = "powder blue",command=lambda:btnClick(0))
+btn0.grid(row = 4,column = 0)
+
+btnClear = Button(cal,padx = 16,pady = 16,bd = 8,fg = "black",font = ('arial',20,'bold'),
+              text = "C",bg = "powder blue",command = btnClearDisplay)
+btnClear.grid(row = 4,column = 1)
+
+btnEquals = Button(cal,padx = 16,pady = 16,bd = 8,fg = "black",font = ('arial',20,'bold'),
+              text = "=",bg = "powder blue",command=btnEqualsInput)
+btnEquals.grid(row = 4,column = 2)
+
+Division = Button(cal,padx = 16,pady = 16,bd = 8,fg = "black",font = ('arial',20,'bold'),
+              text = "/",bg = "powder blue",command = lambda:btnClick("/"))
+Division.grid(row = 4,column = 3)
+
+cal.mainloop()
