@@ -17,7 +17,6 @@ def searchfile():
     #获取当前选择的目录路径
     try:
         path = text_info.get('1.0',END).split('\n')[1]
-        print(path)
     except Exception as e:
         messagebox.showinfo(title='错误', message='请选择查询目录')
 
