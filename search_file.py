@@ -3,7 +3,7 @@
 from tkinter import *
 from tkinter import filedialog
 from tkinter import messagebox
-import os
+import os,sys
 
 root = Tk()
 root.minsize(500,300)
@@ -12,13 +12,16 @@ root.title('SeachFile soft')
 input_file = StringVar()
 
 #添加文件函数
-def searchfile():
+def inputfile():
 
     #获取当前选择的目录路径
-    try:
-        path = text_info.get('1.0',END).split('\n')[1]
-    except Exception as e:
+    path = text_info.get('1.0',END).split('\n')[1]
+    if len(path) == 0:
         messagebox.showinfo(title='错误', message='请选择查询目录')
+    else:
+        searchfile(path)
+
+def searchfile(path):
 
     #获取目录下的文件
     filelists = []
@@ -64,7 +67,7 @@ btn_path.place(relx = 0.5,y = 10 ,height = 30,width = 80)
 
 
 #查找按钮
-btn_search = Button(root,text = '开始',command = searchfile)
+btn_search = Button(root,text = '开始',command = inputfile)
 btn_search.place(relx = 0.8,y = 10,height = 30,width = 80)
 
 #信息展示  ,wraplength设置自动换行
