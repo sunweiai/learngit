@@ -65,6 +65,9 @@ def searchpath():
 
 def click(event):
     input_file.set("")
+    text_info.config(state = NORMAL)
+    text_info.delete('1.0',END)
+    text_info.config(state = DISABLED)
 
 
 #输入文件名文本框
