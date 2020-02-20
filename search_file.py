@@ -83,6 +83,7 @@ btn_search.place(relx = 0.8,y = 13,height = 30,width = 80)
 
 #文本框信息展示
 text_info = Text(root,bg = 'powderblue')
+text_info.config(state = DISABLED)
 text_info.place(relx = 0.02,rely = 0.16,relheight = 0.8,relwidth = 0.95)
 
 #添加滚动条
